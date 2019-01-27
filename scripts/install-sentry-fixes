@@ -3,7 +3,7 @@ echo
 echo "-----------------------------------------------------------------------"
 echo "Thinkpad 13 Chromobook fixes installation script for Elementary OS Juno"
 echo "-----------------------------------------------------------------------"
-echo "Detailed info: https://github.com/Backpackstudio/chromebook-sentry."
+echo "Read more: https://github.com/Backpackstudio/chromebook-sentry."
 echo
 read -p "Are you sure about altering your system? (y/n)?" CONT
 

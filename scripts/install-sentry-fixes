@@ -3,6 +3,7 @@ echo
 echo "-----------------------------------------------------------------------"
 echo "Thinkpad 13 Chromobook fixes installation script for Elementary OS Juno"
 echo "-----------------------------------------------------------------------"
+echo "Detailed info: https://github.com/Backpackstudio/chromebook-sentry."
 echo
 read -p "Are you sure about altering your system? (y/n)?" CONT
 
@@ -41,7 +42,8 @@ if [ "$CONT" = "y" ]; then
 	cd /etc/modprobe.d/
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/etc/modprobe.d/snd-hda-intel.conf -O snd-hda-intel.conf
 	echo
-	echo "Installation complete. Please visit https://github.com/Backpackstudio/chromebook-sentry for additional instructions."
+	echo "Installation complete."
+	echo "Please visit https://github.com/Backpackstudio/chromebook-sentry for additional instructions."
 	echo
 	echo "Please reboot your chromebook to load new audio drivers."
 	exit

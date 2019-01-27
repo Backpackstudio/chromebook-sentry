@@ -20,7 +20,18 @@ if [ "$CONT" = "y" ]; then
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/X11/xkb/symbols/pc -O pc
 	md52="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
 	md52="${md52%% *}"
-	echo "MD5 of installed mappings: ${md52}. (Previous: ${md51}."
+	echo "MD5 of installed mappings: ${md52}. (Previous: ${md51}.)"
+	echo
+	echo
+	echo "Installing audio drivers and settings for Sentry Chromobook"
+	cd /lib/firmware/
+	echo "Downloading and installing audio firmware..."
+	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/lib/firmware/dfw_sst.bin -O dfw_sst.bin
+	md53="$(md5sum "/lib/firmware/dfw_sst.bin")"
+	md53="${md53%% *}"
+	echo "MD5 of installed audio firmware (dfw_sst.bin): ${md53}."
+	echo
+	echo "Installation complete"
 	echo "Please reboot your chromebook."
 	exit
 else

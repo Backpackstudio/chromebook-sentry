@@ -169,3 +169,10 @@ sudo chmod +x audio-headphones
 ```
 Add `audio-speakers` scripts into your Elementary OS **System Settings** > **Applications** > **Startup** list and you should have audio every time you boot and log into your Chromebook.
 
+## All in One Installer
+I have prepared all-in-one installation script, which should make installation procedure a lot easier. I recommend manual step-by-step procedure to handle possible errors immediately and properly.
+
+```
+cd; curl -LO https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/scripts/install-sentry-fixes && sudo bash install-sentry-fixes
+```
+

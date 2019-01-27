@@ -58,10 +58,72 @@ reboot
 ```
 
 ### Fixing audio
-Do not use [Gallium OS Skylake Audio Fix](https://github.com/GalliumOS/galliumos-skylake) for ThinkPad 13 Chromebook as this does not work for properly on model. Instead of that, use files provided by [StephanvanSchaik](https://git.codentium.com/StephanvanSchaik/gentoo-chromebook-skylake), but keep in mind, that still some modifications are required.
+Do not use [Gallium OS Skylake Audio Fix](https://github.com/GalliumOS/galliumos-skylake) for ThinkPad 13 Chromebook as this does not work for properly on this model. Instead of that, use files provided by [StephanvanSchaik](https://git.codentium.com/StephanvanSchaik/gentoo-chromebook-skylake), but keep in mind, that still some modifications are required.
 
+#### 1. Check kernel
+Please check your current version of kernel. Older kernel versions might not support audio drivers provided in these instructions.
 
+```
+uname -r
+```
+> 4.20.5-042005-generic
 
+```
+lsb_release -a
+```
 
+> LSB Version:	core-9.20170808ubuntu1-noarch:security-9.20170808ubuntu1-noarch<br>
+> Distributor ID:	elementary<br>
+> Description:	elementary OS 5.0 Juno<br>
+> Release:	5.0<br>
+> Codename:	juno
 
+```
+hostnamectl
+```
+> Static hostname: elementary<br>
+> Icon name: computer-desktop<br>
+> Chassis: desktop<br>
+> Machine ID: e88d7669b6294d3c87a642f6b594e50d<br>
+> Boot ID: f68a336a63ac4112bad1ad16199e5262<br>
+> Operating System: elementary OS 5.0 Juno<br>
+> Kernel: Linux 4.20.5-042005-generic<br>
+> Architecture: x86-64
+
+Your system kernel should be newer than 4.17, otherwise you wouldn't get audio. Please follow instruction above how to install Ukuu and update the kernel.
+
+### 2. Install firmware
+No firmware, no audio. Invalid firmware, no audio or disrupted audio. There are various versions of dfw_sst.bin available, but some of them wouldn't work or cause sound distortions. The best firmware is provided by [StephanvanSchaik](https://git.codentium.com/StephanvanSchaik/gentoo-chromebook-skylake). 
+
+I have included dfw_sst.bin also (MD5: 5238c7bb0c2af50ffeb109edb4da67f9).
+
+```
+sudo su
+cd /lib/firmware/
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/lib/firmware/dfw_sst.bin -O dfw_sst.bin
+md5sum dfw_sst.bin
+```
+> 5238c7bb0c2af50ffeb109edb4da67f9 dfw_sst.bin
+
+### 3. Install hardware definitions for ALSA
+Once we have installed proper firmware (dfw_sst.bin) we are ready to add hardware definitions for ALSA.
+
+```
+sudo su
+mkdir -p /usr/share/alsa/ucm/sklnau8825max/
+cd /usr/share/alsa/ucm/sklnau8825max/
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/Google-sentry-1.0-sentry.conf -O Google-sentry-1.0-sentry.conf
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/HiFi.conf -O HiFi.conf
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/sklnau8825max.conf -O sklnau8825max.conf
+ln -s /usr/share/alsa/ucm/sklnau8825max /usr/share/alsa/ucm/Google-sentry-1.0-sentry
+```
+
+### 4. Disable snd-hda-intel
+Do use Chromebook audio device we have to disable snd-hda-intel first.
+
+```
+sudo su
+cd /etc/modprobe.d/
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/etc/modprobe.d/snd-hda-intel.conf -O snd-hda-intel.conf
+```
 

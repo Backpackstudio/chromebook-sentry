@@ -114,6 +114,7 @@ Once we have installed proper firmware (dfw_sst.bin) we are ready to add hardwar
 
 ```
 sudo su
+rm -d /usr/share/alsa/ucm/Google-sentry-1.0-sentry
 mkdir -p /usr/share/alsa/ucm/sklnau8825max/
 cd /usr/share/alsa/ucm/sklnau8825max/
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/Google-sentry-1.0-sentry.conf -O Google-sentry-1.0-sentry.conf
@@ -176,3 +177,4 @@ I have prepared an all-in-one installation script, which should make installatio
 cd; curl -LO https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/scripts/install-sentry-fixes && sudo bash install-sentry-fixes
 ```
 
+<hr>

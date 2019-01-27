@@ -54,5 +54,6 @@ if [ "$CONT" = "y" ]; then
 	exit
 else
 	echo "Installation cancelled."
+	echo "Please visit https://github.com/Backpackstudio/chromebook-sentry for additional instructions."
 	exit
 fi

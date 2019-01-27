@@ -1,6 +1,10 @@
 # Elementary OS on Lenovo ThinkPad 13 Chromebook
 
-It's a challenge to get Linux to run on Lenovo ThinkPad 13 Chromebook. Elementary OS is not created especially for Chromebooks, but as it's based on latest Ubuntu this works almost fine on Chromebook. There are still few issues on Lenovo ThinkPad 13 Chromebook on using Elementary OS. The biggest challenge is to get audio working, also there is no Chromebook keys.
+It's a challenge to get Linux to run on Lenovo ThinkPad 13 Chromebook. Elementary OS is not created especially for Chromebooks, but as it's based on latest Ubuntu, this works almost fine on Chromebook. There are still few issues on Lenovo ThinkPad 13 Chromebook when using Elementary OS - the biggest challenge is to get audio working, also there is no Chromebook keys. Below you will find some guidelines how to overcome those issues.
+
+Please note, I'm not hardware or Linux expert. All these instructions are based on various instructions I have found on the Internet and tested personally on Elementary OS running on Lenovo ThinkPad 13 Chromebook. If you find some mistakes, please report that I can fix these and update this repository.
+
+These instructions should work on any latest Ubuntu or Ubuntu based Linux OS.
 
 ## Installing Elementary OS on Thinkpad
 Lenovo ThinkPad 13 Chromebook is locked, so you cannot install Linux easily on it. But there is a workaround provided by the MrChromebox.tech.
@@ -126,4 +130,42 @@ sudo su
 cd /etc/modprobe.d/
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/etc/modprobe.d/snd-hda-intel.conf -O snd-hda-intel.conf
 ```
+Your system is almost ready now. To continue reboot is required.
+
+```
+reboot
+```
+### 5. Final touch
+You should have new audio "Built-in Audio" device instead of "Dummy Audio" now. On some cases Pulse audio still not play properly trough desired devices. By running these commands on Terminal Pulse Audio can be restarted and switched to the desired device.
+
+Play audio trough Speakers
+
+```
+pulseaudio -k
+alsaucm -c sklnau8825max set _verb HiFi set _disdev Speaker
+alsaucm -c sklnau8825max set _verb HiFi set _disdev Headphone
+alsaucm -c sklnau8825max set _verb HiFi set _enadev Speaker
+```
+
+Play audio trough Headphones
+
+```
+pulseaudio -k
+alsaucm -c sklnau8825max set _verb HiFi set _disdev Speaker
+alsaucm -c sklnau8825max set _verb HiFi set _disdev Headphone
+alsaucm -c sklnau8825max set _verb HiFi set _enadev Headphone
+```
+
+To simplyfy these task you can youse ready to use scripts instead. You can install these by using these commands.
+
+```
+cd
+mkdir -p Scripts
+cd Scripts
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/scripts/audio-speakers
+wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/scripts/audio-headphones
+sudo chmod +x audio-speakers
+sudo chmod +x audio-headphones
+```
+Add `audio-speakers` scripts into your Elementary OS **System Settings** > **Applications** > **Startup** list and you should have audio every time you boot and log into your Chromebook.
 

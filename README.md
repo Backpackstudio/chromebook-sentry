@@ -18,6 +18,8 @@ cd; curl -LO https://mrchromebox.tech/firmware-util.sh && sudo bash firmware-uti
 ```
 You can use this command later too, once you have installed Linux to upgrade firmware or change settings.
 
+> If you want a more stable setup, you might consider to [remove Write-protect Screw](https://www.manualslib.com/manual/1241854/Lenovo-Thinkpad-13.html?page=28). Use some professional help! It's not recommended to do it by-self if you aren't mobile devices repair technician.
+
 Once you have updated the firmware, you can boot your chromebook from Elementary OS live USB device.
 
 Boot your Chromebook into Elementary OS Live and follow instructions to install Elementary OS. Installation procedure is simple and easy.

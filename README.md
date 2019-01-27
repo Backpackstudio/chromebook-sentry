@@ -119,7 +119,7 @@ cd /usr/share/alsa/ucm/sklnau8825max/
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/Google-sentry-1.0-sentry.conf -O Google-sentry-1.0-sentry.conf
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/HiFi.conf -O HiFi.conf
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/sklnau8825max.conf -O sklnau8825max.conf
-ln -s /usr/share/alsa/ucm/sklnau8825max/ /usr/share/alsa/ucm/Google-sentry-1.0-sentry/
+ln -s /usr/share/alsa/ucm/sklnau8825max/ /usr/share/alsa/ucm/Google-sentry-1.0-sentry
 ```
 
 ### 4. Disable snd-hda-intel
@@ -170,7 +170,7 @@ sudo chmod +x audio-headphones
 Add `audio-speakers` scripts into your Elementary OS **System Settings** > **Applications** > **Startup** list and you should have audio every time you boot and log into your Chromebook.
 
 ## All in One Installer
-I have prepared all-in-one installation script, which should make installation procedure a lot easier. I recommend manual step-by-step procedure to handle possible errors immediately and properly.
+I have prepared an all-in-one installation script, which should make installation procedure a lot easier. I recommend manual step-by-step procedure to handle possible errors immediately and properly.
 
 ```
 cd; curl -LO https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/scripts/install-sentry-fixes && sudo bash install-sentry-fixes

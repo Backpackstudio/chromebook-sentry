@@ -4,14 +4,17 @@ echo "-----------------------------------------------------------------------"
 echo "Thinkpad 13 Chromobook fixes installation script for Elementary OS Juno"
 echo "-----------------------------------------------------------------------"
 echo
+
 read -p "Are you sure about altering your system? (y/n)?" CONT
 
 if [ "$CONT" = "y" ]; then
-
+	echo
 	echo "Installing mappings for Chromobook keys"
+	echo
 	cp -n /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.bck
 	cd /usr/share/X11/xkb/symbols/
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/X11/xkb/symbols/pc -O pc
+	md5sum pc
 	echo "Please reboot your chromebook."
 	exit
 

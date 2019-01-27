@@ -1,34 +1,29 @@
 #!/bin/bash
-
+echo
 echo "-----------------------------------------------------------------------"
 echo "Thinkpad 13 Chromobook fixes installation script for Elementary OS Juno"
 echo "-----------------------------------------------------------------------"
 echo
-
 read -p "Are you sure about altering your system? (y/n)?" CONT
 
 if [ "$CONT" = "y" ]; then
-
 	echo
 	echo "Installing mappings for Chromobook keys"
 	echo
-	md5="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
-	md5="${md5%% *}"
-	echo "MD5 of current mappings: ${md5}"
-	echo
-	cp -n /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.bck
+	md51="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
+	md51="${md51%% *}"
+	echo "MD5 of current mappings: ${md51}"
+	echo "Making backup of current mappings file..."
+	cp -n "/usr/share/X11/xkb/symbols/pc" "/usr/share/X11/xkb/symbols/pc.${md51}.bck"
 	cd /usr/share/X11/xkb/symbols/
+	echo "Downloading and replacing mappings file..."
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/X11/xkb/symbols/pc -O pc
-	echo
-	md5="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
-	md5="${md5%% *}"
-	echo "MD5 of installed mappings: ${md5}"
+	md52="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
+	md52="${md52%% *}"
+	echo "MD5 of installed mappings: ${md52}. (Previous: ${md51}."
 	echo "Please reboot your chromebook."
 	exit
-
 else
-
 	echo "Installation cancelled."
 	exit
-
 fi

@@ -8,17 +8,21 @@ echo
 read -p "Are you sure about altering your system? (y/n)?" CONT
 
 if [ "$CONT" = "y" ]; then
-	
+
 	echo
 	echo "Installing mappings for Chromobook keys"
 	echo
-	md5sum /usr/share/X11/xkb/symbols/pc
+	md5="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
+	md5="${md5%% *}"
+	echo "MD5 of current mappings: ${md5}"
 	echo
 	cp -n /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.bck
 	cd /usr/share/X11/xkb/symbols/
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/X11/xkb/symbols/pc -O pc
 	echo
-	md5sum /usr/share/X11/xkb/symbols/pc
+	md5="$(md5sum "/usr/share/X11/xkb/symbols/pc")"
+	md5="${md5%% *}"
+	echo "MD5 of installed mappings: ${md5}"
 	echo "Please reboot your chromebook."
 	exit
 

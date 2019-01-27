@@ -119,7 +119,7 @@ cd /usr/share/alsa/ucm/sklnau8825max/
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/Google-sentry-1.0-sentry.conf -O Google-sentry-1.0-sentry.conf
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/HiFi.conf -O HiFi.conf
 wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/sklnau8825max.conf -O sklnau8825max.conf
-ln -s /usr/share/alsa/ucm/sklnau8825max /usr/share/alsa/ucm/Google-sentry-1.0-sentry
+ln -s /usr/share/alsa/ucm/sklnau8825max/ /usr/share/alsa/ucm/Google-sentry-1.0-sentry/
 ```
 
 ### 4. Disable snd-hda-intel

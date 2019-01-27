@@ -37,7 +37,7 @@ if [ "$CONT" = "y" ]; then
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/Google-sentry-1.0-sentry.conf -O Google-sentry-1.0-sentry.conf
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/HiFi.conf -O HiFi.conf
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/usr/share/alsa/ucm/sklnau8825max/sklnau8825max.conf -O sklnau8825max.conf
-	ln -s /usr/share/alsa/ucm/sklnau8825max /usr/share/alsa/ucm/Google-sentry-1.0-sentry
+	ln -s /usr/share/alsa/ucm/sklnau8825max/ /usr/share/alsa/ucm/Google-sentry-1.0-sentry/
 	echo "Disabling snd-hda-intel"
 	cd /etc/modprobe.d/
 	wget https://raw.githubusercontent.com/Backpackstudio/chromebook-sentry/master/mods/etc/modprobe.d/snd-hda-intel.conf -O snd-hda-intel.conf

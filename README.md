@@ -37,6 +37,13 @@ sudo apt update && sudo apt install ukuu
 ```
 Reboot your chromebook after kernel update.
 
+### Requirements
+
+- 8GB USB drive or SD Card
+- [Elementary OS](https://elementary.io) .iso image. [Download ISO](https://fra1.dl.elementary.io/download/MTU0ODYxNzE1OA==/elementaryos-5.0-stable.20181016.iso).
+- [Balena Etcher](https://www.balena.io/etcher/) to create bootable USB disk / SD Card
+- Few hours of free time
+
 ## Fixing ThinkPad 13 Chromebook
 Once you have installed Elementary OS on your ThinkPad 13 Chromebook and updated it to latest versions, including the latest kernel, most of hardware should work fine.
 
